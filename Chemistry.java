@@ -1,6 +1,10 @@
 import java.util.Scanner;
 
+
+
 public class Chemistry {
+
+
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
@@ -16,12 +20,24 @@ public class Chemistry {
         String element2=" ";
         double val1=0;
         double val2=0;
+        String element01;
+        String element02 ;
+        double val01;
+        double val102;
+        String element001;
+        String element002;
+        double val001;
+        double val1002;
+        String rast1="";
+        String rast2="";
+
 
         if(Ins2.nat.equals("Соль")){
-            String element01 = Ins2.element11;
-            String element02 = Ins2.element12;
-            double val01 = Ins2.val11;
-            double val102 = Ins2.val12;
+            element01 = Ins2.element11;
+            element02 = Ins2.element12;
+            val01 = Ins2.val11;
+            val102 = Ins2.val12;
+            rast1=Ins3.rast;
         } else{
             element1 = Ins2.element;
             val1 = Ins2.val;
@@ -35,10 +51,11 @@ public class Chemistry {
         String nat2 = Ins2.nat;
 
         if(Ins2.nat.equals("Соль")){
-            String element001 = Ins2.element11;
-            String element002 = Ins2.element12;
-            double val001 = Ins2.val11;
-            double val1002 = Ins2.val12;
+            element001 = Ins2.element11;
+            element002 = Ins2.element12;
+            val001 = Ins2.val11;
+            val1002 = Ins2.val12;
+            rast2=Ins3.rast;
         } else{
             element2 = Ins2.element;
             val2 = Ins2.val;
@@ -77,13 +94,18 @@ public class Chemistry {
             int val11 = (int)val1;
             int val22=(int)val2;
 
-            if((Ins2.nat=="Основа") && (nat1=="Кислота")){
+            if((nat2=="Основа") && (nat1=="Кислота")){
                 System.out.println("В результате реакции получится: "+ element2 + val22 + "(" + element1 + ")" + val11);
-            }else if((Ins2.nat=="Кислота") && (nat1=="Основа")){
+            }else if((nat2=="Кислота") && (nat1=="Основа")){
                 System.out.println("В результате реакции получится: "+ element1 + val11 + "(" + element2 + ")" + val22);
             } else{
                 System.out.println("Вещества не взаимодействуют между собой");
             }
+        } else if((nat1.equals("Соль")) || (nat2.equals("Соль"))){
+            if(rast1.equals("Растворимая") || rast2.equals("Растворимая")){
+                
+            }
+
         }
 
 

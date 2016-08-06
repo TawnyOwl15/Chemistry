@@ -6,6 +6,8 @@ public class Ins2 {
     public static double val;
     public static double val11;
     public static double val12;
+    double koef1;
+    double koef2;
 
     public void setVal(String name, int n) {
         char num = name.charAt(n - 1);
@@ -13,6 +15,7 @@ public class Ins2 {
     }
 
     public void setIns(String substance) {
+        nat="Empty";
         char sym1 = substance.charAt(0);
         String s1 = Character.toString(sym1);
 
@@ -82,26 +85,38 @@ public class Ins2 {
 
             if((number3 == '(' ) && (number5 == ')' )){
                 char symbol1 = substance.charAt(0);
-                String element11 = Character.toString(symbol1);
-                char symbol2 = substance.charAt(3);
-                String element12 = Character.toString(symbol2);
+                element11 = Character.toString(symbol1);
+                char symbol2 = substance.charAt(4);
+                element12 = Character.toString(symbol2);
+                setVal(substance, 2);
+                koef1=val;
+                setVal(substance, 6);
+                koef2=val;
             } else if((number4 == '(' ) && (number6 == ')' )){
                 char ss =substance.charAt(0);
                 char ss2 =substance.charAt(1);
                 String el1=Character.toString(ss);
                 String el2=Character.toString(ss2);
-                String elementl1 = el1+el2;
+                element11 = el1+el2;
                 char symbol2 = substance.charAt(4);
-                String element12 = Character.toString(symbol2);
+                element12 = Character.toString(symbol2);
+                setVal(substance, 3);
+                koef1=val;
+                setVal(substance, 7);
+                koef2=val;
 
             } else if((number3 == '(' ) && (number6 == ')' )){
                 char symbol1 = substance.charAt(0);
-                String element11 = Character.toString(symbol1);
-                char ss = substance.charAt(3);
-                char ss2 = substance.charAt(4);
+                element11 = Character.toString(symbol1);
+                char ss = substance.charAt(4);
+                char ss2 = substance.charAt(5);
                 String el1=Character.toString(ss);
                 String el2=Character.toString(ss2);
-                String element12 = el1+el2;
+                element12 = el1+el2;
+                setVal(substance, 2);
+                koef1=val;
+                setVal(substance, 7);
+                koef2=val;
 
             } else {
                 char number7 = substance.charAt(6);
@@ -111,23 +126,31 @@ public class Ins2 {
                     char symbol11 = substance.charAt(1);
                     String el1=Character.toString(symbol1);
                     String el2=Character.toString(symbol11);
-                    String element11 = el1+el2;
-                    char ss = substance.charAt(3);
-                    char ss2 = substance.charAt(4);
+                    element11 = el1+el2;
+                    char ss = substance.charAt(4);
+                    char ss2 = substance.charAt(5);
                     String el11=Character.toString(ss);
                     String el12=Character.toString(ss2);
-                    String element12 = el11+el12;
+                    element12 = el11+el12;
+                    setVal(substance, 3);
+                    koef1=val;
+                    setVal(substance, 8);
+                    koef2=val;
 
                 } else if((number3 == '(' ) && (number7 == ')' )){
                     char symbol1 = substance.charAt(0);
-                    String element11 = Character.toString(symbol1);
+                    element11 = Character.toString(symbol1);
                     char ss = substance.charAt(3);
                     char ss2 = substance.charAt(4);
                     char ss3 = substance.charAt(5);
                     String el11=Character.toString(ss);
                     String el12=Character.toString(ss2);
                     String el13=Character.toString(ss3);
-                    String element12 = el11+el12+el13;
+                    element12 = el11+el12+el13;
+                    setVal(substance, 2);
+                    koef1=val;
+                    setVal(substance, 8);
+                    koef2=val;
 
                 } else {
                     char number8 = substance.charAt(7);
@@ -137,18 +160,22 @@ public class Ins2 {
                         char symbol11 = substance.charAt(1);
                         String el1=Character.toString(symbol1);
                         String el2=Character.toString(symbol11);
-                        String element11 = el1+el2;
-                        char ss = substance.charAt(3);
-                        char ss2 = substance.charAt(4);
-                        char ss3 = substance.charAt(5);
+                        element11 = el1+el2;
+                        char ss = substance.charAt(4);
+                        char ss2 = substance.charAt(5);
+                        char ss3 = substance.charAt(6);
                         String el11=Character.toString(ss);
                         String el12=Character.toString(ss2);
                         String el13=Character.toString(ss3);
-                        String element12 = el11+el12+el13;
+                        element12 = el11+el12+el13;
+                        setVal(substance, 3);
+                        koef1=val;
+                        setVal(substance, 9);
+                        koef2=val;
 
                     } else if((number3 == '(' ) && (number8 == ')' )){
                         char symbol1 = substance.charAt(0);
-                        String element11 = Character.toString(symbol1);
+                        element11 = Character.toString(symbol1);
                         char ss = substance.charAt(3);
                         char ss2 = substance.charAt(4);
                         char ss3 = substance.charAt(5);
@@ -157,7 +184,11 @@ public class Ins2 {
                         String el12=Character.toString(ss2);
                         String el13=Character.toString(ss3);
                         String el14=Character.toString(ss4);
-                        String element12 = el11+el12+el13+el14;
+                        element12 = el11+el12+el13+el14;
+                        setVal(substance, 2);
+                        koef1=val;
+                        setVal(substance, 9);
+                        koef2=val;
 
                     } else {
                         char number9 = substance.charAt(8);
@@ -167,16 +198,20 @@ public class Ins2 {
                             char symbol11 = substance.charAt(1);
                             String el1=Character.toString(symbol1);
                             String el2=Character.toString(symbol11);
-                            String element11 = el1+el2;
-                            char ss = substance.charAt(3);
-                            char ss2 = substance.charAt(4);
-                            char ss3 = substance.charAt(5);
-                            char ss4 = substance.charAt(6);
+                            element11 = el1+el2;
+                            char ss = substance.charAt(4);
+                            char ss2 = substance.charAt(5);
+                            char ss3 = substance.charAt(6);
+                            char ss4 = substance.charAt(7);
                             String el11=Character.toString(ss);
                             String el12=Character.toString(ss2);
                             String el13=Character.toString(ss3);
                             String el14=Character.toString(ss4);
-                            String element12 = el11+el12+el13+el14;
+                            element12 = el11+el12+el13+el14;
+                            setVal(substance, 3);
+                            koef1=val;
+                            setVal(substance, 10);
+                            koef2=val;
 
                         } else{
                             System.out.println("Неопознанный тип соли");
@@ -191,107 +226,18 @@ public class Ins2 {
             b.setValSalt(element12);
             val12=val;
 
+            b.setRast(element11, element12);
+
+            if(val11==0){
+                val11=(val12*koef2)/koef1;
+            }else if(val12==0){
+                val12=(val11*koef1)/koef2;
+            }
+
         }
     }
 }
-     /* switch (substance) {
-            case "H1F":
-                element = s3;
-                nat = "Кислота";
-                setVal(substance, 1, val);
-                break;
-            case "H1I":
-                element = s3;
-                nat = "Кислота";
-                num2 = substance.charAt(1);
-                val = Character.getNumericValue(num2);
-                break;
-            case "H2S":
-                element = s3;
-                nat = "Кислота";
-                num2 = substance.charAt(1);
-                val = Character.getNumericValue(num2);
-                break;
-            default:
-                char sym4 = substance.charAt(3);
-                String s4 = Character.toString(sym4);
 
-                switch(substance) {
-                    case "H1Br":
-                        element = s3 + s4;
-                        nat = "Кислота";
-                        num2 = substance.charAt(1);
-                        val = Character.getNumericValue(num2);
-                        break;
-                    case "H1Cl":
-                        element = s3 + s4;
-                        nat = "Кислота";
-                        num2 = substance.charAt(1);
-                        val = Character.getNumericValue(num2);
-                        break;
-                    default:
-                        char sym5=substance.charAt(4);
-                        String s5 = Character.toString(sym5);
-
-                        char sym6 = substance.charAt(5);
-                        String s6 = Character.toString(sym6);
-
-                        switch (s1){
-                            case "H":
-                                element = s3 + s4 + s5 +s6;
-                                nat = "Кислота";
-                                num2 = substance.charAt(1);
-                                val = Character.getNumericValue(num2);
-                                break;
-                        }
-
-                        switch (s5){
-                            case "H":
-                                element=s1;
-                                nat = "Основа";
-                                num2 = substance.charAt(6);
-                                val = Character.getNumericValue(num2);
-                                break;
-                        }
-
-                        if(s6.equals("H")){
-                            element = s1 + s2;
-                            nat = "Основа";
-                            num2 = substance.charAt(7);
-                            val = Character.getNumericValue(num2);
-                        }
-
-                        switch (s6){
-                            case "H":
-                                element = s1 + s2;
-                                nat = "Основа";
-                                num2 = substance.charAt(7);
-                                val = Character.getNumericValue(num2);
-                                break;
-                        }
-                }
-
-        }*/
-
-      /*  if ((s4=="O") && (s5=="H") ){
-            element=Character.toString(substance.charAt(0));
-            nat = "Основа";
-            char num2 = substance.charAt(6);
-            val = Character.getNumericValue(num2);
-        }else if((s5=="O") ){
-            element = Character.toString(substance.charAt(0)) + Character.toString(substance.charAt(1));
-            nat = "Основа";
-            char num2 = substance.charAt(7);
-            val = Character.getNumericValue(num2);
-        } else if(s1=="H"){
-            element = Character.toString(substance.charAt(2)) + Character.toString(substance.charAt(3)) + Character.toString(substance.charAt(4));
-            nat = "Кислота";
-            char num2 = substance.charAt(1);
-            val = Character.getNumericValue(num2);
-        } else {
-            element="Em";
-        }
-        */
 
 
 
