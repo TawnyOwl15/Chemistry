@@ -20,14 +20,14 @@ public class Chemistry {
         String element2=" ";
         double val1=0;
         double val2=0;
-        String element01;
-        String element02 ;
-        double val01;
-        double val102;
-        String element001;
-        String element002;
-        double val001;
-        double val1002;
+        String element01="";
+        String element02 = "";
+        double val01=0;
+        double val02=0;
+        String element001="";
+        String element002="";
+        double val001=0;
+        double val002=0;
         String rast1="";
         String rast2="";
 
@@ -36,7 +36,7 @@ public class Chemistry {
             element01 = Ins2.element11;
             element02 = Ins2.element12;
             val01 = Ins2.val11;
-            val102 = Ins2.val12;
+            val02 = Ins2.val12;
             rast1=Ins3.rast;
         } else{
             element1 = Ins2.element;
@@ -54,7 +54,7 @@ public class Chemistry {
             element001 = Ins2.element11;
             element002 = Ins2.element12;
             val001 = Ins2.val11;
-            val1002 = Ins2.val12;
+            val002 = Ins2.val12;
             rast2=Ins3.rast;
         } else{
             element2 = Ins2.element;
@@ -101,9 +101,72 @@ public class Chemistry {
             } else{
                 System.out.println("Вещества не взаимодействуют между собой");
             }
-        } else if((nat1.equals("Соль")) || (nat2.equals("Соль"))){
-            if(rast1.equals("Растворимая") || rast2.equals("Растворимая")){
-                
+        } else if((nat1.equals("Соль")) && (nat2.equals("Соль"))){
+            if(rast1.equals("Растворимая") && rast2.equals("Растворимая")){
+                if((val01==1) || (val002==1)){
+                    double x=val01;
+                    val01=val002;
+                    val002=x;
+                } else if(val01>val002){
+                    double del = val01/val002;
+                    if((del==2) || (del==3) || (del==4)){
+                        val01=val01/del;
+                        val002=val002/del;
+                    }else{
+                        double x=val01;
+                        val01=val002;
+                        val002=x;
+                    }
+                } else if(val002>val01){
+                    double del = val002/val01;
+                    if((del==2) || (del==3) || (del==4)){
+                        val01=val01/del;
+                        val002=val002/del;
+                    }else{
+                        double x=val01;
+                        val01=val002;
+                        val002=x;
+                    }
+                } else {
+                    val01=1;
+                    val002=1;
+                }
+                if((val001==1) || (val02==1)){
+                    double x=val001;
+                    val001=val02;
+                    val02=x;
+                } else if(val001>val02){
+                    double del = val001/val02;
+                    if((del==2) || (del==3) || (del==4)){
+                        val001=val001/del;
+                        val02=val02/del;
+                    }else{
+                        double x=val001;
+                        val001=val02;
+                        val02=x;
+                    }
+                } else if(val02>val001){
+                    double del = val02/val001;
+                    if((del==2) || (del==3) || (del==4)){
+                        val001=val001/del;
+                        val02=val02/del;
+                    }else{
+                        double x=val001;
+                        val001=val02;
+                        val02=x;
+                    }
+                } else {
+                    val001=1;
+                    val02=1;
+                }
+                int val011 = (int)val01;
+                int val0011 = (int)val001;
+                int val021=(int)val02;
+                int val0021=(int)val002;
+                System.out.println("В результате реакции получим: " + element01 + val011 + element002 + val0021 + " + " + element001 + val0011 + element02 + val021);
+
+            } else{
+                System.out.println("Соли не взаимодействуют между собой");
             }
 
         }

@@ -108,8 +108,8 @@ public class Ins2 {
             } else if((number3 == '(' ) && (number6 == ')' )){
                 char symbol1 = substance.charAt(0);
                 element11 = Character.toString(symbol1);
-                char ss = substance.charAt(4);
-                char ss2 = substance.charAt(5);
+                char ss = substance.charAt(3);
+                char ss2 = substance.charAt(4);
                 String el1=Character.toString(ss);
                 String el2=Character.toString(ss2);
                 element12 = el1+el2;
