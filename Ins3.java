@@ -4,7 +4,7 @@ public class Ins3 {
     public void setValSalt(String element){
         if((element.equals("F")) || (element.equals("I")) || (element.equals("Cl")) || (element.equals("Br")) || (element.equals("NO3")) || (element.equals("NO2")) || (element.equals("PO3"))  || (element.equals("K"))  || (element.equals("Na"))  || (element.equals("Li"))  || (element.equals("Rb"))  || (element.equals("Cs"))  || (element.equals("Fr"))  || (element.equals("Ag"))){
             Ins2.val=1;
-        } else if((element.equals("S")) || (element.equals("SO3")) || (element.equals("SiO3")) || (element.equals("SO2")) || (element.equals("CO3"))  || (element.equals("Be"))  || (element.equals("Mg"))  || (element.equals("Ca"))  || (element.equals("Zn"))  || (element.equals("Sr"))  || (element.equals("Cd"))  || (element.equals("Ba"))  || (element.equals("Hg"))  || (element.equals("Ra"))  || (element.equals("Cu")) || (element.equals("Pb"))  || (element.equals("Sn")) || (element.equals("Co"))  || (element.equals("Ni"))){
+        } else if((element.equals("S")) || (element.equals("SO4")) || (element.equals("SiO3")) || (element.equals("SO3")) || (element.equals("CO3"))  || (element.equals("Be"))  || (element.equals("Mg"))  || (element.equals("Ca"))  || (element.equals("Zn"))  || (element.equals("Sr"))  || (element.equals("Cd"))  || (element.equals("Ba"))  || (element.equals("Hg"))  || (element.equals("Ra"))  || (element.equals("Cu")) || (element.equals("Pb"))  || (element.equals("Sn")) || (element.equals("Co"))  || (element.equals("Ni"))){
             Ins2.val=2;
         }else if((element.equals("PO4"))  || (element.equals("Al"))  || (element.equals("Ga"))  || (element.equals("In"))  || (element.equals("Cr"))){
             Ins2.val=3;
@@ -58,6 +58,14 @@ public class Ins3 {
             }else{
                 rast="Растворимая";
             }
+        }
+    }
+
+    public void setMe(String me){
+        if(me.equals("K") || me.equals("Li") || me.equals("Na") || me.equals("Ca") || me.equals("Ba") || me.equals("Rb") || me.equals("Fr") || me.equals("Cs")){
+            Ins2.nat = "Щелочь";
+        }else if(me.equals("Al") || me.equals("Be") || me.equals("Ti") || me.equals("V") || me.equals("Cr") || me.equals("Mn") || me.equals("Fe") || me.equals("Zn") || me.equals("Ga") || me.equals("Ge") || me.equals("Y") || me.equals("Zr") || me.equals("Nb") || me.equals("Mo") || me.equals("Tc") || me.equals("Ru") || me.equals("Rh") || me.equals("Pd") || me.equals("Sn") || me.equals("Sb") || me.equals("Pb") || me.equals("Bi") || me.equals("Po") || me.equals("Hf") || me.equals("Ta") || me.equals("W") || me.equals("Re") || me.equals("Os") || me.equals("Ir")){
+            Ins2.nat= "Амфотерный";
         }
     }
 }

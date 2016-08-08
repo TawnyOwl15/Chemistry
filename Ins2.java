@@ -25,6 +25,8 @@ public class Ins2 {
         char sym3 = substance.charAt(2);
         String s3 = Character.toString(sym3);
 
+        Ins3 b = new Ins3();
+
         if ((substance.equals("H1F")) || (substance.equals("H1I")) || (substance.equals("H2S"))) {
             element = s3;
             nat = "Кислота";
@@ -32,6 +34,7 @@ public class Ins2 {
         }else if(s3.equals("H")){
             element = s1;
             nat = "Основа";
+            b.setMe(element);
             val=1;
         } else {
             char sym4 = substance.charAt(3);
@@ -44,6 +47,7 @@ public class Ins2 {
             }else if(s4.equals("H")){
                 element = s1 + s2;
                 nat="Основа";
+                b.setMe(element);
                 val=1;
             } else {
                 char sym5 = substance.charAt(4);
@@ -53,6 +57,7 @@ public class Ins2 {
                     case "H":
                         element = s1 + s2;
                         nat = "Основа";
+                        b.setMe(element);
                         setVal(substance, 7);
                         break;
                 }
@@ -220,7 +225,7 @@ public class Ins2 {
                 }
             }
 
-            Ins3 b = new Ins3();
+
             b.setValSalt(element11);
             val11=val;
             b.setValSalt(element12);
@@ -235,6 +240,7 @@ public class Ins2 {
             }
 
         }
+
     }
 }
 
