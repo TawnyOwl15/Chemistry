@@ -1,5 +1,6 @@
 public class Ins3 {
     public static String rast;
+    public static double strength;
 
     public void setValSalt(String element){
         if((element.equals("F")) || (element.equals("I")) || (element.equals("Cl")) || (element.equals("Br")) || (element.equals("NO3")) || (element.equals("NO2")) || (element.equals("PO3"))  || (element.equals("K"))  || (element.equals("Na"))  || (element.equals("Li"))  || (element.equals("Rb"))  || (element.equals("Cs"))  || (element.equals("Fr"))  || (element.equals("Ag"))){
@@ -66,6 +67,34 @@ public class Ins3 {
             Ins2.nat = "Щелочь";
         }else if(me.equals("Al") || me.equals("Be") || me.equals("Ti") || me.equals("V") || me.equals("Cr") || me.equals("Mn") || me.equals("Fe") || me.equals("Zn") || me.equals("Ga") || me.equals("Ge") || me.equals("Y") || me.equals("Zr") || me.equals("Nb") || me.equals("Mo") || me.equals("Tc") || me.equals("Ru") || me.equals("Rh") || me.equals("Pd") || me.equals("Sn") || me.equals("Sb") || me.equals("Pb") || me.equals("Bi") || me.equals("Po") || me.equals("Hf") || me.equals("Ta") || me.equals("W") || me.equals("Re") || me.equals("Os") || me.equals("Ir")){
             Ins2.nat= "Амфотерный";
+        }
+    }
+
+    public void setStrength(String acid, int koef1, int koef2){
+        if(acid.equals("H2SO4") || acid.equals("H1F") || acid.equals("SO4")  || acid.equals("F")){
+            strength = 2.3;
+        } else if(acid.equals("H1NO3")  || acid.equals("NO3")){
+            strength = 2.2;
+        }else  if(acid.equals("H1Cl") || acid.equals("H1Br") || acid.equals("H1I")  || acid.equals("Cl") || acid.equals("Br")  || acid.equals("I")) {
+            strength = 2.1;
+        } else if(acid.equals("H2S")  || acid.equals("S")){
+            strength = 1.5;
+        } else{
+            Ins2 f = new Ins2();
+            char kk = acid.charAt(0);
+            String kk2 = Character.toString(kk);
+            if(kk2.equals("H")){
+                f.setVal(acid, koef1);
+                double k = Ins2.val;
+                f.setVal(acid, koef2);
+                double k2 = Ins2.val;
+                strength = k2 - k;
+            } else{
+                f.setVal(acid, koef2);
+                double k2 = Ins2.val;
+                strength = k2 - koef1;
+            }
+
         }
     }
 }

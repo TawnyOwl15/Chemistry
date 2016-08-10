@@ -6,8 +6,8 @@ public class Ins2 {
     public static double val;
     public static double val11;
     public static double val12;
-    double koef1;
-    double koef2;
+    double koef1=0;
+    double koef2=0;
 
     public void setVal(String name, int n) {
         char num = name.charAt(n - 1);
@@ -30,6 +30,7 @@ public class Ins2 {
         if ((substance.equals("H1F")) || (substance.equals("H1I")) || (substance.equals("H2S"))) {
             element = s3;
             nat = "Кислота";
+            b.setStrength(substance, 0,0);
             setVal(substance, 2);
         }else if(s3.equals("H")){
             element = s1;
@@ -43,6 +44,7 @@ public class Ins2 {
             if ((substance.equals("H1Br")) || (substance.equals("H1Cl"))) {
                 element = s3 + s4;
                 nat = "Кислота";
+                b.setStrength(substance, 0,0);
                 setVal(substance, 2);
             }else if(s4.equals("H")){
                 element = s1 + s2;
@@ -66,13 +68,16 @@ public class Ins2 {
                     if(s4.equals("O")){
                         element = s3 + s4 + s5;
                         nat = "Кислота";
+                        b.setStrength(substance, 2, 5);
                         setVal(substance, 2);
+
                     } else {
                         char sym6 = substance.charAt(5);
                         String s6 = Character.toString(sym6);
 
                         element = s3 + s4 + s5 + s6;
                         nat = "Кислота";
+                        b.setStrength(substance, 2, 6);
                         setVal(substance, 2);
                     }
 
@@ -93,6 +98,7 @@ public class Ins2 {
                 element11 = Character.toString(symbol1);
                 char symbol2 = substance.charAt(4);
                 element12 = Character.toString(symbol2);
+
                 setVal(substance, 2);
                 koef1=val;
                 setVal(substance, 6);
@@ -105,6 +111,7 @@ public class Ins2 {
                 element11 = el1+el2;
                 char symbol2 = substance.charAt(4);
                 element12 = Character.toString(symbol2);
+
                 setVal(substance, 3);
                 koef1=val;
                 setVal(substance, 7);
@@ -118,6 +125,7 @@ public class Ins2 {
                 String el1=Character.toString(ss);
                 String el2=Character.toString(ss2);
                 element12 = el1+el2;
+
                 setVal(substance, 2);
                 koef1=val;
                 setVal(substance, 7);
@@ -137,6 +145,7 @@ public class Ins2 {
                     String el11=Character.toString(ss);
                     String el12=Character.toString(ss2);
                     element12 = el11+el12;
+
                     setVal(substance, 3);
                     koef1=val;
                     setVal(substance, 8);
@@ -154,6 +163,7 @@ public class Ins2 {
                     element12 = el11+el12+el13;
                     setVal(substance, 2);
                     koef1=val;
+
                     setVal(substance, 8);
                     koef2=val;
 
@@ -175,6 +185,7 @@ public class Ins2 {
                         element12 = el11+el12+el13;
                         setVal(substance, 3);
                         koef1=val;
+
                         setVal(substance, 9);
                         koef2=val;
 
@@ -192,6 +203,7 @@ public class Ins2 {
                         element12 = el11+el12+el13+el14;
                         setVal(substance, 2);
                         koef1=val;
+
                         setVal(substance, 9);
                         koef2=val;
 
@@ -218,6 +230,7 @@ public class Ins2 {
                             setVal(substance, 10);
                             koef2=val;
 
+
                         } else{
                             System.out.println("Неопознанный тип соли");
                         }
@@ -238,6 +251,9 @@ public class Ins2 {
             }else if(val12==0){
                 val12=(val11*koef1)/koef2;
             }
+
+            int str = (int)val12;
+            b.setStrength(element12, str, element12.length());
 
         }
 

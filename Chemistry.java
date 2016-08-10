@@ -30,6 +30,10 @@ public class Chemistry {
         double val002=0;
         String rast1="";
         String rast2="";
+        double strength1=0;
+        double strength2=0;
+
+        strength1 = Ins3.strength;
 
 
         if(Ins2.nat.equals("Соль")){
@@ -42,6 +46,7 @@ public class Chemistry {
             element1 = Ins2.element;
             val1 = Ins2.val;
         }
+        System.out.println(strength1);
 
         Scanner scanner2 = new Scanner(System.in);
         System.out.println("Введите второе вещество(при вводе кислоты после Н обязательно ставьте коэфициент(например, H1NO3); при вводе соли - обязательно ставьте и скобки, и коэфициенты(например, К1(NO3)1):");
@@ -49,6 +54,9 @@ public class Chemistry {
 
         a.setIns(substance);
         String nat2 = Ins2.nat;
+
+        strength2 = Ins3.strength;
+        System.out.println(strength2);
 
         if(Ins2.nat.equals("Соль")){
             element001 = Ins2.element11;
@@ -255,7 +263,48 @@ public class Chemistry {
             } else{
                 System.out.println("Соль не растворима в воде");
             }
+        } else if((nat1.equals("Кислота") && nat2.equals("Соль")) || (nat1.equals("Соль") && nat2.equals("Кислота"))){
+            if(nat1.equals("Кислота") && nat2.equals("Соль")){
+                if(strength1>strength2){
+                    if((val1==1) || (val001==1)){
+                        double x=val1;
+                        val1=val001;
+                        val001=x;
+                    } else if(val1>val001){
+                        double del = val1/val001;
+                        if((del==2) || (del==3) || (del==4)){
+                            val1=val1/del;
+                            val001=val001/del;
+                        }else{
+                            double x=val1;
+                            val1=val001;
+                            val001=x;
+                        }
+                    } else if(val001>val1){
+                        double del = val001/val1;
+                        if((del==2) || (del==3) || (del==4)){
+                            val1=val1/del;
+                            val001=val001/del;
+                        }else{
+                            double x=val1;
+                            val1=val001;
+                            val001=x;
+                        }
+                    } else {
+                        val1=1;
+                        val001=1;
+                    }
+
+                    int val11 = (int)val1;
+                    int val0011 = (int)val001;
+                    int val0021=(int)val002;
+
+                    System.out.println("В результате реакции получим: " + "H" + val0021 + element002 + " + " + element001 + val0011 + "(" + element1 + ")" + val11);
+                }
+            }
+
         }
+
 
 
 
