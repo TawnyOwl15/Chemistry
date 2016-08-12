@@ -8,6 +8,8 @@ public class Ins2 {
     public static double val12;
     double koef1=0;
     double koef2=0;
+    public static double valent01;
+    public static double valent02;
 
     public void setVal(String name, int n) {
         char num = name.charAt(n - 1);
@@ -65,21 +67,26 @@ public class Ins2 {
                 }
 
                 if(s1.equals("H")){
-                    if(s4.equals("O")){
-                        element = s3 + s4 + s5;
-                        nat = "Кислота";
-                        b.setStrength(substance, 2, 5);
-                        setVal(substance, 2);
-
+                    if(sym4=='('){
+                        nat = "Empty";
                     } else {
-                        char sym6 = substance.charAt(5);
-                        String s6 = Character.toString(sym6);
+                        if(s4.equals("O")){
+                            element = s3 + s4 + s5;
+                            nat = "Кислота";
+                            b.setStrength(substance, 2, 5);
+                            setVal(substance, 2);
 
-                        element = s3 + s4 + s5 + s6;
-                        nat = "Кислота";
-                        b.setStrength(substance, 2, 6);
-                        setVal(substance, 2);
+                        } else {
+                            char sym6 = substance.charAt(5);
+                            String s6 = Character.toString(sym6);
+
+                            element = s3 + s4 + s5 + s6;
+                            nat = "Кислота";
+                            b.setStrength(substance, 2, 6);
+                            setVal(substance, 2);
+                        }
                     }
+
 
                 }
 
@@ -258,7 +265,39 @@ public class Ins2 {
         }
 
     }
+
+    public void setKoef(double valent1, double valent2){
+        if((valent1==1) || (valent2==1)){
+            double x=valent1;
+            valent01=valent2;
+            valent02=x;
+        } else if(valent1>valent2){
+            double del = valent1/valent2;
+            if((del==2) || (del==3) || (del==4)){
+                valent01=valent1/del;
+                valent02=valent2/del;
+            }else{
+                double x=valent1;
+                valent01=valent2;
+                valent02=x;
+            }
+        } else if(valent2>valent1){
+            double del = valent2/valent1;
+            if((del==2) || (del==3) || (del==4)){
+                valent01=valent1/del;
+                valent02=valent2/del;
+            }else{
+                double x=valent1;
+                valent01=valent2;
+                valent02=x;
+            }
+        } else {
+            valent01=1;
+            valent02=1;
+        }
+    }
 }
+
 
 
 
