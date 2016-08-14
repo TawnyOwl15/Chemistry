@@ -65,8 +65,10 @@ public class Ins3 {
     public void setMe(String me){
         if(me.equals("K") || me.equals("Li") || me.equals("Na") || me.equals("Ca") || me.equals("Ba") || me.equals("Rb") || me.equals("Fr") || me.equals("Cs")){
             Ins2.nat = "Щелочь";
-        }else if(me.equals("Al") || me.equals("Be") || me.equals("Ti") || me.equals("V") || me.equals("Cr") || me.equals("Mn") || me.equals("Fe") || me.equals("Zn") || me.equals("Ga") || me.equals("Ge") || me.equals("Y") || me.equals("Zr") || me.equals("Nb") || me.equals("Mo") || me.equals("Tc") || me.equals("Ru") || me.equals("Rh") || me.equals("Pd") || me.equals("Sn") || me.equals("Sb") || me.equals("Pb") || me.equals("Bi") || me.equals("Po") || me.equals("Hf") || me.equals("Ta") || me.equals("W") || me.equals("Re") || me.equals("Os") || me.equals("Ir")){
+        }else if(me.equals("Al") || me.equals("Be") || me.equals("Ti") || me.equals("V") || me.equals("Cr") || me.equals("Mn") || me.equals("Fe") || me.equals("Zn") || me.equals("Ga") || me.equals("Ge") || me.equals("Y") || me.equals("Zr") || me.equals("Nb") || me.equals("Mo") || me.equals("Tc") || me.equals("Ru") || me.equals("Rh") || me.equals("Pd") || me.equals("Sn") || me.equals("Sb") || me.equals("Pb") || me.equals("Bi") || me.equals("Po") || me.equals("Hf") || me.equals("Ta") || me.equals("W") || me.equals("Re") || me.equals("Os") || me.equals("Ir") || me.equals("Pt")){
             Ins2.nat= "Амфотерный";
+        } else if(me.equals("Cu") || me.equals("Ag") || me.equals("Mg") || me.equals("Sr") || me.equals("Cd") || me.equals("Hg") || me.equals("Sc") || me.equals("In") || me.equals("Tl") || me.equals("Co") || me.equals("Ni") || me.equals("La") || me.equals("Ac")){
+            Ins2.nat = "Основа";
         }
     }
 
