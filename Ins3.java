@@ -73,11 +73,11 @@ public class Ins3 {
     }
 
     public void setStrength(String acid, int koef1, int koef2){
-        if(acid.equals("H2SO4") || acid.equals("H1F") || acid.equals("SO4")  || acid.equals("F")){
+        if(acid.equals("H2SO4") || acid.equals("H1F") || acid.equals("SO4")  || acid.equals("F") || acid.equals("S1O3")){
             strength = 2.3;
-        } else if(acid.equals("H1NO3")  || acid.equals("NO3")){
+        } else if(acid.equals("H1NO3")  || acid.equals("NO3") || acid.equals("N2O5")){
             strength = 2.2;
-        }else  if(acid.equals("H1Cl") || acid.equals("H1Br") || acid.equals("H1I")  || acid.equals("Cl") || acid.equals("Br")  || acid.equals("I")) {
+        }else  if(acid.equals("H1Cl") || acid.equals("H1Br") || acid.equals("H1I")  || acid.equals("Cl") || acid.equals("Br")  || acid.equals("I") || acid.equals("P2O5") || acid.equals("Si1O2")) {
             strength = 2.1;
         } else if(acid.equals("H2S")  || acid.equals("S")){
             strength = 1.5;

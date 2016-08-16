@@ -56,6 +56,7 @@ public class Ins2 {
                 b.setMe(element);
                 if (nat.equals("Empty")) {
                     nat = "Немет. оксид";
+                    b.setStrength(substance, 2, 4);
                     if(element.equals("P")){
                         element="PO4";
                         val=3;
@@ -96,6 +97,11 @@ public class Ins2 {
                         val = 2 * val11 - val;
                     }
                 } else {
+                    setVal(substance, 2);
+                    koef1 = val;
+                    setVal(substance, 4);
+                    koef2 = val;
+                    val = 2 * koef2 / koef1;
                     if (nat.equals("Основа")) {
                         nat = "Осн. оксид";
                     } else if (nat.equals("Щелочь")) {
@@ -103,11 +109,6 @@ public class Ins2 {
                     } else if (nat.equals("Амфотерный")) {
                         nat = "Амф. оксид";
                     }
-                    setVal(substance, 2);
-                    koef1 = val;
-                    setVal(substance, 4);
-                    koef2 = val;
-                    val = 2 * koef2 / koef1;
                 }
             } else {
                 char sym5 = substance.charAt(4);
@@ -140,6 +141,7 @@ public class Ins2 {
                     b.setMe(element);
                     if (nat.equals("Empty")) {
                         nat = "Немет. оксид";
+                        b.setStrength(substance, 3, 5);
                         setVal(substance, 5);
                         double val1 = val + 1;
                         int val11 = (int) val1;
@@ -151,6 +153,11 @@ public class Ins2 {
                         val = 2 * koef2 / koef1;
                         val = 2 * val11 - val;
                     } else {
+                        setVal(substance, 3);
+                        koef1 = val;
+                        setVal(substance, 5);
+                        koef2 = val;
+                        val = 2 * koef2 / koef1;
                         if (nat.equals("Основа")) {
                             nat = "Осн. оксид";
                         } else if (nat.equals("Щелочь")) {
@@ -158,86 +165,11 @@ public class Ins2 {
                         } else if (nat.equals("Амфотерный")) {
                             nat = "Амф. оксид";
                         }
-                        setVal(substance, 3);
-                        koef1 = val;
-                        setVal(substance, 5);
-                        koef2 = val;
-                        val = 2 * koef2 / koef1;
                     }
                 }
             }
         }
-       /* if(nat.equals("Empty")){
-            sym1 = substance.charAt(0);
-            s1 = Character.toString(sym1);
-            sym2 = substance.charAt(1);
-            s2 = Character.toString(sym2);
-            sym3 = substance.charAt(2);
-            s3 = Character.toString(sym3);
-            char sym4 = substance.charAt(3);
-            String s4 = Character.toString(sym4);
-            if(s3.equals("O")){
-                element=s1;
-                b.setMe(element);
-                if(nat.equals("Empty")) {
-                    nat = "Немет. оксид";
-                    setVal(substance, 4);
-                    double val1=val+1;
-                    int val11 = (int) val1;
-                    element=s1+s2+s3+val11;
-                    setVal(substance,2);
-                    koef1=val;
-                    setVal(substance, 4);
-                    koef2=val;
-                    val=2*koef2/koef1;
-                    val=2*val11-val;
-                } else {
-                    if(nat.equals("Основа")){
-                        nat = "Осн. оксид";
-                    } else if(nat.equals("Щелочь")){
-                        nat = "Щел. оксид";
-                    } else if(nat.equals("Амфотерный")){
-                        nat = "Амф. оксид";
-                    }
-                    setVal(substance,2);
-                    koef1=val;
-                    setVal(substance, 4);
-                    koef2=val;
-                    val=2*koef2/koef1;
-                }
 
-            } else if(s4.equals("O")){
-                element=s1+s2;
-                b.setMe(element);
-                if(nat.equals("Empty")) {
-                    nat = "Немет. оксид";
-                    setVal(substance, 5);
-                    double val1=val+1;
-                    int val11 = (int)val1;
-                    element=s1+s2+s3+s4+val11;
-                    setVal(substance,3);
-                    koef1=val;
-                    setVal(substance, 5);
-                    koef2=val;
-                    val=2*koef2/koef1;
-                    val=2*val11-val;
-                } else {
-                    if(nat.equals("Основа")){
-                        nat = "Осн. оксид";
-                    } else if(nat.equals("Щелочь")){
-                        nat = "Щел. оксид";
-                    } else if(nat.equals("Амфотерный")){
-                        nat = "Амф. оксид";
-                    }
-                    setVal(substance,3);
-                    koef1=val;
-                    setVal(substance, 5);
-                    koef2=val;
-                    val=2*koef2/koef1;
-                }
-
-            }
-        } */
 
         if(nat.equals("Empty")){
             nat = "Соль";
