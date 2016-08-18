@@ -59,6 +59,8 @@ public class Ins3 {
             }else{
                 rast="Растворимая";
             }
+        } else {
+            rast = "No";
         }
     }
 
@@ -96,7 +98,6 @@ public class Ins3 {
                 double k2 = Ins2.val;
                 strength = k2 - koef1;
             }
-
         }
     }
 }

@@ -170,7 +170,6 @@ public class Ins2 {
             }
         }
 
-
         if(nat.equals("Empty")){
             nat = "Соль";
             char number3 = substance.charAt(2);
@@ -181,7 +180,7 @@ public class Ins2 {
             if((number3 == '(' ) && (number5 == ')' )){
                 char symbol1 = substance.charAt(0);
                 element11 = Character.toString(symbol1);
-                char symbol2 = substance.charAt(4);
+                char symbol2 = substance.charAt(3);
                 element12 = Character.toString(symbol2);
 
                 setVal(substance, 2);
@@ -315,14 +314,12 @@ public class Ins2 {
                             setVal(substance, 10);
                             koef2=val;
 
-
                         } else{
                             System.out.println("Неопознанный тип соли");
                         }
                     }
                 }
             }
-
 
             b.setValSalt(element11);
             val11=val;
@@ -339,9 +336,7 @@ public class Ins2 {
 
             int str = (int)val12;
             b.setStrength(element12, str, element12.length());
-
         }
-
     }
 
     public void setKoef(double valent1, double valent2){

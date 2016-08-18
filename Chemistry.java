@@ -1,9 +1,6 @@
 import java.util.Scanner;
 
-
-
 public class Chemistry {
-
 
     public static void main(String[] args) {
 
@@ -34,7 +31,6 @@ public class Chemistry {
         double strength2=0;
 
         strength1 = Ins3.strength;
-
 
         if(Ins2.nat.equals("Соль")){
             element01 = Ins2.element11;
@@ -233,48 +229,125 @@ public class Chemistry {
             a.setKoef(val1, val2);
             int val11 = (int) Ins2.valent01;
             int val22 = (int) Ins2.valent02;
-            System.out.println("В результате реакции получим: " + element1 + val11 + "(" + element2 + ")" + val22);
+            e.setRast(element1, element2);
+            if(Ins3.rast.equals("No")){
+                System.out.println("В результате реакции получим: " + element1 + val11 + "(" + element2 + ")" + val22 + "↓");
+            } else {
+                System.out.println("В результате реакции получим: " + element1 + val11 + "(" + element2 + ")" + val22);
+            }
         }  else if((nat2.equals("Осн. оксид") || nat2.equals("Амф. оксид") || nat2.equals("Щел. оксид")) && nat1.equals("Немет. оксид")){
             a.setKoef(val1, val2);
             int val11 = (int) Ins2.valent01;
             int val22 = (int) Ins2.valent02;
-            System.out.println("В результате реакции получим: " + element2 + val22 + "(" + element1 + ")" + val11);
+            e.setRast(element2, element1);
+            if(Ins3.rast.equals("No")){
+                System.out.println("В результате реакции получим: " + element2 + val22 + "(" + element1 + ")" + val11 + "↓");
+            } else {
+                System.out.println("В результате реакции получим: " + element2 + val22 + "(" + element1 + ")" + val11);
+            }
         } else if((nat1.equals("Осн. оксид") || nat1.equals("Амф. оксид") || nat1.equals("Щел. оксид") || nat1.equals("Основа") || nat1.equals("Амфотерный") || nat1.equals("Щелочь")) && (nat2.equals("Кислота") || nat2.equals("Немет. оксид"))){
             a.setKoef(val1, val2);
             int val11 = (int) Ins2.valent01;
             int val22 = (int) Ins2.valent02;
-            System.out.println("В результате реакции получим: " + element1 + val11 + "(" + element2 + ")" + val22 + " + H2O");
+            e.setRast(element1, element2);
+            if(Ins3.rast.equals("No")){
+                System.out.println("В результате реакции получим: " + element1 + val11 + "(" + element2 + ")" + val22 + "↓ + H2O");
+            } else {
+                System.out.println("В результате реакции получим: " + element1 + val11 + "(" + element2 + ")" + val22 + " + H2O");
+            }
         } else if ((nat2.equals("Осн. оксид") || nat2.equals("Амф. оксид") || nat2.equals("Щел. оксид") || nat2.equals("Основа") || nat2.equals("Амфотерный") || nat2.equals("Щелочь")) && (nat1.equals("Кислота") || nat1.equals("Немет. оксид"))){
             a.setKoef(val1, val2);
             int val11 = (int) Ins2.valent01;
             int val22 = (int) Ins2.valent02;
-            System.out.println("В результате реакции получим: " + element2 + val22 + "(" + element1 + ")" + val11 + " + H2O");
+            e.setRast(element2,element1);
+            if(Ins3.rast.equals("No")){
+                System.out.println("В результате реакции получим: " + element2 + val22 + "(" + element1 + ")" + val11 + "↓ + H2O");
+            } else {
+                System.out.println("В результате реакции получим: " + element2 + val22 + "(" + element1 + ")" + val11 + " + H2O");
+            }
         } else if(nat1.equals("Немет. оксид") && nat2.equals("Соль")){
-            if(strength1>strength2){
+            if((strength1>strength2) && (strength1>2)){
                 a.setKoef(val001, val1);
                 int val0011 = (int) Ins2.valent01;
                 int val11 = (int) Ins2.valent02;
-                int val0021 = (int) val002;
-                System.out.println("В результате реакции получим: " + element001 + val0011 + "(" + element1 + ")" + val11 + " + " + "H" + val0021 + element002);
+
+                if(element002.equals("Cl") || element002.equals("Br") || element002.equals("I") || element002.equals("F")){
+                    int val0021 = 2;
+                    element002=element002+val0021;
+                } else if(element002.equals("S")){
+
+                } else {
+                    char s2 = element002.charAt(1);
+                    if(s2=='O'){
+                        a.setVal(element002, 3);
+                        double valEl=Ins2.val*2-val002;
+                        a.setKoef(valEl, 2);
+                        char s1 = element002.charAt(0);
+                        int val0021 = (int) Ins2.valent02;
+                        int o = (int)Ins2.valent01;
+                        element002 = Character.toString(s1)+val0021+"O"+o;
+                    } else {
+                        a.setVal(element002, 4);
+                        double valEl = Ins2.val * 2 - val002;
+                        a.setKoef(valEl, 2);
+                        char s1 = element002.charAt(0);
+                        int val0021 = (int) Ins2.valent02;
+                        int o = (int) Ins2.valent01;
+                        element002 = Character.toString(s1) + Character.toString(s2) + val0021 + "O" + o;
+                    }
+                }
+                e.setRast(element001,element1);
+                if(Ins3.rast.equals("No")){
+                    System.out.println("В результате реакции получим: " + element001 + val0011 + "(" + element1 + ")" + val11 + "↓ + " + element002);
+                } else {
+                    System.out.println("В результате реакции получим: " + element001 + val0011 + "(" + element1 + ")" + val11 + " + " + element002);
+                }
             } else {
                 System.out.println("Вещества не взаимодействуют между собой");
             }
         } else if(nat2.equals("Немет. оксид") && nat1.equals("Соль")){
-            if(strength1<strength2){
+            if((strength1<strength2) && (strength2>2)){
                 a.setKoef(val01, val2);
                 int val011 = (int) Ins2.valent01;
                 int val21 = (int) Ins2.valent02;
-                int val021 = (int) val02;
-                System.out.println("В результате реакции получим: " + element01 + val011 + "(" + element2 + ")" + val21 + " + " + "H" + val021 + element02);
+
+                if(element02.equals("Cl") || element02.equals("Br") || element02.equals("I") || element02.equals("F")) {
+                    int val021 = 2;
+                    element02 = element02 + val021;
+                } else if(element02.equals("S")){
+
+                } else {
+                    char s2 = element02.charAt(1);
+                    if(s2=='O'){
+                        a.setVal(element02, 3);
+                        double valEl=Ins2.val*2-val02;
+                        a.setKoef(valEl, 2);
+                        char s1 = element02.charAt(0);
+                        int val021 = (int) Ins2.valent02;
+                        int o = (int)Ins2.valent01;
+                        element02 = Character.toString(s1)+val021+"O"+o;
+                    } else {
+                        a.setVal(element02, 4);
+                        double valEl = Ins2.val * 2 - val02;
+                        a.setKoef(valEl, 2);
+                        char s1 = element02.charAt(0);
+                        int val021 = (int) Ins2.valent02;
+                        int o = (int) Ins2.valent01;
+                        element02 = Character.toString(s1) + Character.toString(s2) + val021 + "O" + o;
+                    }
+                }
+
+                e.setRast(element01, element2);
+                if(Ins3.rast.equals("No")){
+                    System.out.println("В результате реакции получим: " + element01 + val011 + "(" + element2 + ")" + val21 + "↓ + " + element02);
+                } else {
+                    System.out.println("В результате реакции получим: " + element01 + val011 + "(" + element2 + ")" + val21 + " + " + element02);
+                }
             } else {
                 System.out.println("Вещества не взаимодействуют между собой");
             }
         } else {
             System.out.println("Вещества не взаимодействуют между собой");
         }
-
-
     }
-
-
 }
