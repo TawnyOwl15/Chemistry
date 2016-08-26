@@ -1,4 +1,4 @@
-public class Ins2 {
+public class Inspection {
     public static String element;
     public static String element11;
     public static String element12;
@@ -6,17 +6,17 @@ public class Ins2 {
     public static double val;
     public static double val11;
     public static double val12;
-    double koef1=0;
-    double koef2=0;
+    double index1 =0;
+    double index2 =0;
     public static double valent01;
     public static double valent02;
 
-    public void setVal(String name, int n) {
+    public void setVal(String name, int n) { //метод, который считывает n-й елемент и переводит его в число
         char num = name.charAt(n - 1);
         val = Character.getNumericValue(num);
     }
 
-    public void setIns(String substance) {
+    public void setIns(String substance) { //метод, который определяет тип вещества, валентности елементов, из которых оно состоит, и сами елементы
         nat="Empty";
         char sym1 = substance.charAt(0);
         String s1 = Character.toString(sym1);
@@ -27,7 +27,7 @@ public class Ins2 {
         char sym3 = substance.charAt(2);
         String s3 = Character.toString(sym3);
 
-        Ins3 b = new Ins3();
+        Inspection2 b = new Inspection2();
 
         if ((substance.equals("H1F")) || (substance.equals("H1I")) || (substance.equals("H2S"))) {
             element = s3;
@@ -41,7 +41,6 @@ public class Ins2 {
         } else {
             char sym4 = substance.charAt(3);
             String s4 = Character.toString(sym4);
-
             if ((substance.equals("H1Br")) || (substance.equals("H1Cl"))) {
                 element = s3 + s4;
                 nat = "Кислота";
@@ -77,10 +76,10 @@ public class Ins2 {
                                 element="NO2";
                                 val=1;
                             } else {
-                                koef1 = val;
+                                index1 = val;
                                 setVal(substance, 4);
-                                koef2 = val;
-                                val = 2 * koef2 / koef1+1;
+                                index2 = val;
+                                val = 2 * index2 / index1 +1;
                                 val = 2 * val11 - val;
                             }
                         }
@@ -90,18 +89,18 @@ public class Ins2 {
                         int val11 = (int) val1;
                         element = s1 + s2 + s3 + val11;
                         setVal(substance, 2);
-                        koef1 = val;
+                        index1 = val;
                         setVal(substance, 4);
-                        koef2 = val;
-                        val = 2 * koef2 / koef1;
+                        index2 = val;
+                        val = 2 * index2 / index1;
                         val = 2 * val11 - val;
                     }
                 } else {
                     setVal(substance, 2);
-                    koef1 = val;
+                    index1 = val;
                     setVal(substance, 4);
-                    koef2 = val;
-                    val = 2 * koef2 / koef1;
+                    index2 = val;
+                    val = 2 * index2 / index1;
                     if (nat.equals("Основа")) {
                         nat = "Осн. оксид";
                     } else if (nat.equals("Щелочь")) {
@@ -147,17 +146,17 @@ public class Ins2 {
                         int val11 = (int) val1;
                         element = s1 + s2 + s3 + s4 + val11;
                         setVal(substance, 3);
-                        koef1 = val;
+                        index1 = val;
                         setVal(substance, 5);
-                        koef2 = val;
-                        val = 2 * koef2 / koef1;
+                        index2 = val;
+                        val = 2 * index2 / index1;
                         val = 2 * val11 - val;
                     } else {
                         setVal(substance, 3);
-                        koef1 = val;
+                        index1 = val;
                         setVal(substance, 5);
-                        koef2 = val;
-                        val = 2 * koef2 / koef1;
+                        index2 = val;
+                        val = 2 * index2 / index1;
                         if (nat.equals("Основа")) {
                             nat = "Осн. оксид";
                         } else if (nat.equals("Щелочь")) {
@@ -182,11 +181,10 @@ public class Ins2 {
                 element11 = Character.toString(symbol1);
                 char symbol2 = substance.charAt(3);
                 element12 = Character.toString(symbol2);
-
                 setVal(substance, 2);
-                koef1=val;
+                index1 =val;
                 setVal(substance, 6);
-                koef2=val;
+                index2 =val;
             } else if((number4 == '(' ) && (number6 == ')' )){
                 char ss =substance.charAt(0);
                 char ss2 =substance.charAt(1);
@@ -195,12 +193,10 @@ public class Ins2 {
                 element11 = el1+el2;
                 char symbol2 = substance.charAt(4);
                 element12 = Character.toString(symbol2);
-
                 setVal(substance, 3);
-                koef1=val;
+                index1 =val;
                 setVal(substance, 7);
-                koef2=val;
-
+                index2 =val;
             } else if((number3 == '(' ) && (number6 == ')' )){
                 char symbol1 = substance.charAt(0);
                 element11 = Character.toString(symbol1);
@@ -209,12 +205,10 @@ public class Ins2 {
                 String el1=Character.toString(ss);
                 String el2=Character.toString(ss2);
                 element12 = el1+el2;
-
                 setVal(substance, 2);
-                koef1=val;
+                index1 =val;
                 setVal(substance, 7);
-                koef2=val;
-
+                index2 =val;
             } else {
                 char number7 = substance.charAt(6);
 
@@ -229,12 +223,10 @@ public class Ins2 {
                     String el11=Character.toString(ss);
                     String el12=Character.toString(ss2);
                     element12 = el11+el12;
-
                     setVal(substance, 3);
-                    koef1=val;
+                    index1 =val;
                     setVal(substance, 8);
-                    koef2=val;
-
+                    index2 =val;
                 } else if((number3 == '(' ) && (number7 == ')' )){
                     char symbol1 = substance.charAt(0);
                     element11 = Character.toString(symbol1);
@@ -246,11 +238,9 @@ public class Ins2 {
                     String el13=Character.toString(ss3);
                     element12 = el11+el12+el13;
                     setVal(substance, 2);
-                    koef1=val;
-
+                    index1 =val;
                     setVal(substance, 8);
-                    koef2=val;
-
+                    index2 =val;
                 } else {
                     char number8 = substance.charAt(7);
 
@@ -268,11 +258,9 @@ public class Ins2 {
                         String el13=Character.toString(ss3);
                         element12 = el11+el12+el13;
                         setVal(substance, 3);
-                        koef1=val;
-
+                        index1 =val;
                         setVal(substance, 9);
-                        koef2=val;
-
+                        index2 =val;
                     } else if((number3 == '(' ) && (number8 == ')' )){
                         char symbol1 = substance.charAt(0);
                         element11 = Character.toString(symbol1);
@@ -286,11 +274,9 @@ public class Ins2 {
                         String el14=Character.toString(ss4);
                         element12 = el11+el12+el13+el14;
                         setVal(substance, 2);
-                        koef1=val;
-
+                        index1 =val;
                         setVal(substance, 9);
-                        koef2=val;
-
+                        index2 =val;
                     } else {
                         char number9 = substance.charAt(8);
 
@@ -310,12 +296,12 @@ public class Ins2 {
                             String el14=Character.toString(ss4);
                             element12 = el11+el12+el13+el14;
                             setVal(substance, 3);
-                            koef1=val;
+                            index1 =val;
                             setVal(substance, 10);
-                            koef2=val;
-
+                            index2 =val;
                         } else{
                             System.out.println("Неопознанный тип соли");
+                            System.exit(0);
                         }
                     }
                 }
@@ -328,10 +314,10 @@ public class Ins2 {
 
             b.setRast(element11, element12);
 
-            if(val11==0){
-                val11=(val12*koef2)/koef1;
+            if(val11==0){  //определяет валентность, если введенный елемент не предусмотрен(в солях)
+                val11=(val12* index2)/ index1;
             }else if(val12==0){
-                val12=(val11*koef1)/koef2;
+                val12=(val11* index1)/ index2;
             }
 
             int str = (int)val12;
@@ -339,7 +325,7 @@ public class Ins2 {
         }
     }
 
-    public void setKoef(double valent1, double valent2){
+    public void setIndex(double valent1, double valent2){//определяет индексы в веществе
         if((valent1==1) || (valent2==1)){
             double x=valent1;
             valent01=valent2;

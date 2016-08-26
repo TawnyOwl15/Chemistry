@@ -1,18 +1,7 @@
 import java.util.Scanner;
 
 public class Chemistry {
-
     public static void main(String[] args) {
-
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Введите первое вещество(при вводе кислоты после Н обязательно ставьте индекс(например, H1NO3); при вводе соли - обязательно ставьте и скобки, и индексы(например, К1(NO3)1); при вводе оксида пишите оба индекса):");
-        String substance = scanner.nextLine();
-
-        Ins2 a = new Ins2();
-        a.setIns(substance);
-
-        String nat1 = Ins2.nat;
-
         String element1=" ";
         String element2=" ";
         double val1=0;
@@ -27,48 +16,57 @@ public class Chemistry {
         double val002=0;
         String rast1="";
         String rast2="";
-        double strength1=0;
-        double strength2=0;
+        double strength1;
+        double strength2;
 
-        strength1 = Ins3.strength;
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Введите первое вещество(при вводе кислоты после Н обязательно ставьте индекс(например, H1NO3); соли - и скобки, и индексы(К1(NO3)1); основы - скобки и индексы необязательны(КОН, Са(ОН)2); при вводе оксида пишите оба индекса(S1O3)):");
+        String substance = scanner.nextLine();
 
-        if(Ins2.nat.equals("Соль")){
-            element01 = Ins2.element11;
-            element02 = Ins2.element12;
-            val01 = Ins2.val11;
-            val02 = Ins2.val12;
-            rast1=Ins3.rast;
+        Inspection a = new Inspection();
+        a.setIns(substance);
+
+        String nat1 = Inspection.nat;
+
+        strength1 = Inspection2.strength;
+
+        if(Inspection.nat.equals("Соль")){
+            element01 = Inspection.element11;
+            element02 = Inspection.element12;
+            val01 = Inspection.val11;
+            val02 = Inspection.val12;
+            rast1= Inspection2.rast;
         } else{
-            element1 = Ins2.element;
-            val1 = Ins2.val;
+            element1 = Inspection.element;
+            val1 = Inspection.val;
         }
 
         Scanner scanner2 = new Scanner(System.in);
-        System.out.println("Введите второе вещество(при вводе кислоты после Н обязательно ставьте индекс(например, H1NO3); при вводе соли - обязательно ставьте и скобки, и индексы(например, К1(NO3)1); при вводе оксида пишите оба индекса):");
+        System.out.println("Введите второе вещество(при вводе кислоты после Н обязательно ставьте индекс(например, H1NO3); соли - и скобки, и индексы(К1(NO3)1); основы - скобки и индексы необязательны(КОН, Са(ОН)2); при вводе оксида пишите оба индекса(S1O3)):");
         substance = scanner2.nextLine();
 
         a.setIns(substance);
-        String nat2 = Ins2.nat;
+        String nat2 = Inspection.nat;
 
-        strength2 = Ins3.strength;
+        strength2 = Inspection2.strength;
 
-        if(Ins2.nat.equals("Соль")){
-            element001 = Ins2.element11;
-            element002 = Ins2.element12;
-            val001 = Ins2.val11;
-            val002 = Ins2.val12;
-            rast2=Ins3.rast;
+        if(Inspection.nat.equals("Соль")){
+            element001 = Inspection.element11;
+            element002 = Inspection.element12;
+            val001 = Inspection.val11;
+            val002 = Inspection.val12;
+            rast2= Inspection2.rast;
         } else{
-            element2 = Ins2.element;
-            val2 = Ins2.val;
+            element2 = Inspection.element;
+            val2 = Inspection.val;
         }
 
-        Ins3 e = new Ins3();
+        Inspection2 c = new Inspection2();
 
         if((nat1.equals("Кислота") && nat2.equals("Основа")) || (nat1.equals("Основа") && nat2.equals("Кислота")) || (nat1.equals("Щелочь") && nat2.equals("Кислота")) || (nat1.equals("Кислота") && nat2.equals("Щелочь"))|| (nat1.equals("Амфотерный") && nat2.equals("Кислота")) || (nat1.equals("Кислота") && nat2.equals("Амфотерный"))) {
-            a.setKoef(val1, val2);
-            int val11 = (int)Ins2.valent01;
-            int val22=(int)Ins2.valent02;
+            a.setIndex(val1, val2);
+            int val11 = (int) Inspection.valent01;
+            int val22=(int) Inspection.valent02;
 
             if(nat1.equals("Кислота")) {
                 String element;
@@ -80,26 +78,26 @@ public class Chemistry {
                 val11 = val22;
                 val22 = val;
             }
-            e.setRast(element1, element2);
-            if (Ins3.rast.equals("Растворимая")){
+            c.setRast(element1, element2);
+            if (Inspection2.rast.equals("Растворимая")){
                 System.out.println("В результате реакции получим: "+ element1 + val11 + "(" + element2 + ")" + val22 + " + " + "H2O");
             } else{
                 System.out.println("В результате реакции получим: "+ element1 + val11 + "(" + element2 + ")" + val22 + "↓" + " + " + "H2O");
             }
 
         } else if((nat1.equals("Соль")) && (nat2.equals("Соль"))){
-            e.setRast(element01, element002);
-            String rast3 = Ins3.rast;
-            e.setRast(element001, element02);
-            String rast4 = Ins3.rast;
+            c.setRast(element01, element002);
+            String rast3 = Inspection2.rast;
+            c.setRast(element001, element02);
+            String rast4 = Inspection2.rast;
             if(rast3.equals("No") || rast4.equals("No")){
                 if(rast1.equals("Растворимая") && rast2.equals("Растворимая")){
-                    a.setKoef(val01, val002);
-                    int val011 = (int)Ins2.valent01;
-                    int val0021=(int)Ins2.valent02;
-                    a.setKoef(val001, val02);
-                    int val0011 = (int)Ins2.valent01;
-                    int val021=(int)Ins2.valent02;
+                    a.setIndex(val01, val002);
+                    int val011 = (int) Inspection.valent01;
+                    int val0021=(int) Inspection.valent02;
+                    a.setIndex(val001, val02);
+                    int val0011 = (int) Inspection.valent01;
+                    int val021=(int) Inspection.valent02;
 
                     if(rast3.equals("No") && rast4.equals("No")){
                         System.out.println("В результате реакции получим: " + element01 + val011 + "(" + element002 + ")" + val0021 + "↓" + " + " + element001 + val0011 + "(" + element02 + ")" + val021 + "↓");
@@ -108,7 +106,6 @@ public class Chemistry {
                     } else  if(rast4.equals("No")){
                         System.out.println("В результате реакции получим: " + element01 + val011 + "(" + element002 + ")" + val0021 + " + " + element001 + val0011 + "(" + element02 + ")" + val021 + "↓");
                     }
-
                 } else{
                     System.out.println("Соли не взаимодействуют между собой(одна или обе не растворимы в воде)");
                 }
@@ -118,10 +115,10 @@ public class Chemistry {
 
         } else if((nat1.equals("Соль") && nat2.equals("Щелочь")) || (nat1.equals("Щелочь") && nat2.equals("Соль"))){
             if(rast1.equals("Растворимая") || rast2.equals("Растворимая")) {
-                Ins2.nat = "";
-                e.setMe(element01);
-                e.setMe(element001);
-                if(Ins2.nat.equals("Щелочь")){
+                Inspection.nat = "";
+                c.setMe(element01);
+                c.setMe(element001);
+                if(Inspection.nat.equals("Щелочь")){
                     System.out.println("Щелочь и соль не взаимодействуют между собой(соль содержит лужный металл)");
                 } else {
                     if(nat2.equals("Соль")){
@@ -133,12 +130,12 @@ public class Chemistry {
                         val01=val001;
                     }
 
-                    a.setKoef(val2, val02);
-                    int val21 = (int)Ins2.valent01;
+                    a.setIndex(val2, val02);
+                    int val21 = (int) Inspection.valent01;
                     int val011 = (int)val01;
-                    int val021=(int)Ins2.valent02;
-                    e.setRast(element2, element02);
-                    if(Ins3.rast.equals("Растворимая")){
+                    int val021=(int) Inspection.valent02;
+                    c.setRast(element2, element02);
+                    if(Inspection2.rast.equals("Растворимая")){
                         System.out.println("В результате реакции получим: " + element01 + "(OH)" + val011 + "↓ + " + element2 + val21 + "(" + element02 + ")" + val021);
                     } else {
                         System.out.println("В результате реакции получим: " + element01 + "(OH)" + val011 + "↓ + " + element2 + val21 + "(" + element02 + ")" + val021 + "↓");
@@ -160,12 +157,12 @@ public class Chemistry {
                 strength1=strength2;
                 strength2=strength;
             }
-            e.setRast(element001, element1);
-            rast1=Ins3.rast;
+            c.setRast(element001, element1);
+            rast1= Inspection2.rast;
             if((strength1>strength2) || (rast1.equals("No"))) {
-                a.setKoef(val1, val001);
-                int val11 = (int) Ins2.valent01;
-                int val0011 = (int) Ins2.valent02;
+                a.setIndex(val1, val001);
+                int val11 = (int) Inspection.valent01;
+                int val0011 = (int) Inspection.valent02;
                 int val0021 = (int) val002;
                 if(rast1.equals("No")){
                     System.out.println("В результате реакции получим: " + "H" + val0021 + element002 + " + " + element001 + val0011 + "(" + element1 + ")" + val11 + "↓");
@@ -185,10 +182,11 @@ public class Chemistry {
             int oO = (int) o;
             element1 = element1 + "O" + oO;
             val1 = h;
-            a.setKoef(val2, val1);
-            int val21 = (int) Ins2.valent01;
-            int val11 = (int) Ins2.valent02;
+            a.setIndex(val2, val1);
+            int val21 = (int) Inspection.valent01;
+            int val11 = (int) Inspection.valent02;
             System.out.println("В результате реакции получим: " + element2 + val21 + "(" + element1 + ")" + val11);
+
         } else if(nat2.equals("Амф. оксид") && nat1.equals("Щел. оксид")) {
             double h;
             double o = val2;
@@ -198,10 +196,11 @@ public class Chemistry {
             int oO = (int) o;
             element2 = element2 + "O" + oO;
             val2 = h;
-            a.setKoef(val1, val2);
-            int val11 = (int) Ins2.valent01;
-            int val22 = (int) Ins2.valent02;
+            a.setIndex(val1, val2);
+            int val11 = (int) Inspection.valent01;
+            int val22 = (int) Inspection.valent02;
             System.out.println("В результате реакции получим: " + element1 + val11 + "(" + element2 + ")" + val22);
+
         } else if(((nat1.equals("Амфотерный") || nat1.equals("Амф. оксид")) && (nat2.equals("Щелочь") || nat2.equals("Щел. оксид"))) || ((nat2.equals("Амфотерный") || nat2.equals("Амф. оксид")) && (nat1.equals("Щелочь") || nat1.equals("Щел. оксид")))) {
             if (nat2.equals("Щелочь") || nat2.equals("Щел. оксид")) {
                 double x;
@@ -221,55 +220,60 @@ public class Chemistry {
             int oO = (int) o;
             element2 = element2 + "O" + oO;
             val2 = h;
-            a.setKoef(val1, val2);
-            int val11 = (int) Ins2.valent01;
-            int val22 = (int) Ins2.valent02;
+            a.setIndex(val1, val2);
+            int val11 = (int) Inspection.valent01;
+            int val22 = (int) Inspection.valent02;
             System.out.println("В результате реакции получим: " + element1 + val11 + "(" + element2 + ")" + val22 + " + H2O");
+
         } else if((nat1.equals("Осн. оксид") || nat1.equals("Амф. оксид") || nat1.equals("Щел. оксид")) && nat2.equals("Немет. оксид")){
-            a.setKoef(val1, val2);
-            int val11 = (int) Ins2.valent01;
-            int val22 = (int) Ins2.valent02;
-            e.setRast(element1, element2);
-            if(Ins3.rast.equals("No")){
+            a.setIndex(val1, val2);
+            int val11 = (int) Inspection.valent01;
+            int val22 = (int) Inspection.valent02;
+            c.setRast(element1, element2);
+            if(Inspection2.rast.equals("No")){
                 System.out.println("В результате реакции получим: " + element1 + val11 + "(" + element2 + ")" + val22 + "↓");
             } else {
                 System.out.println("В результате реакции получим: " + element1 + val11 + "(" + element2 + ")" + val22);
             }
+
         }  else if((nat2.equals("Осн. оксид") || nat2.equals("Амф. оксид") || nat2.equals("Щел. оксид")) && nat1.equals("Немет. оксид")){
-            a.setKoef(val1, val2);
-            int val11 = (int) Ins2.valent01;
-            int val22 = (int) Ins2.valent02;
-            e.setRast(element2, element1);
-            if(Ins3.rast.equals("No")){
+            a.setIndex(val1, val2);
+            int val11 = (int) Inspection.valent01;
+            int val22 = (int) Inspection.valent02;
+            c.setRast(element2, element1);
+            if(Inspection2.rast.equals("No")){
                 System.out.println("В результате реакции получим: " + element2 + val22 + "(" + element1 + ")" + val11 + "↓");
             } else {
                 System.out.println("В результате реакции получим: " + element2 + val22 + "(" + element1 + ")" + val11);
             }
+
         } else if((nat1.equals("Осн. оксид") || nat1.equals("Амф. оксид") || nat1.equals("Щел. оксид") || nat1.equals("Основа") || nat1.equals("Амфотерный") || nat1.equals("Щелочь")) && (nat2.equals("Кислота") || nat2.equals("Немет. оксид"))){
-            a.setKoef(val1, val2);
-            int val11 = (int) Ins2.valent01;
-            int val22 = (int) Ins2.valent02;
-            e.setRast(element1, element2);
-            if(Ins3.rast.equals("No")){
+            a.setIndex(val1, val2);
+            int val11 = (int) Inspection.valent01;
+            int val22 = (int) Inspection.valent02;
+            c.setRast(element1, element2);
+            if(Inspection2.rast.equals("No")){
                 System.out.println("В результате реакции получим: " + element1 + val11 + "(" + element2 + ")" + val22 + "↓ + H2O");
             } else {
                 System.out.println("В результате реакции получим: " + element1 + val11 + "(" + element2 + ")" + val22 + " + H2O");
             }
+
         } else if ((nat2.equals("Осн. оксид") || nat2.equals("Амф. оксид") || nat2.equals("Щел. оксид") || nat2.equals("Основа") || nat2.equals("Амфотерный") || nat2.equals("Щелочь")) && (nat1.equals("Кислота") || nat1.equals("Немет. оксид"))){
-            a.setKoef(val1, val2);
-            int val11 = (int) Ins2.valent01;
-            int val22 = (int) Ins2.valent02;
-            e.setRast(element2,element1);
-            if(Ins3.rast.equals("No")){
+            a.setIndex(val1, val2);
+            int val11 = (int) Inspection.valent01;
+            int val22 = (int) Inspection.valent02;
+            c.setRast(element2,element1);
+            if(Inspection2.rast.equals("No")){
                 System.out.println("В результате реакции получим: " + element2 + val22 + "(" + element1 + ")" + val11 + "↓ + H2O");
             } else {
                 System.out.println("В результате реакции получим: " + element2 + val22 + "(" + element1 + ")" + val11 + " + H2O");
             }
+
         } else if(nat1.equals("Немет. оксид") && nat2.equals("Соль")){
             if((strength1>strength2) && (strength1>2)){
-                a.setKoef(val001, val1);
-                int val0011 = (int) Ins2.valent01;
-                int val11 = (int) Ins2.valent02;
+                a.setIndex(val001, val1);
+                int val0011 = (int) Inspection.valent01;
+                int val11 = (int) Inspection.valent02;
 
                 if(element002.equals("Cl") || element002.equals("Br") || element002.equals("I") || element002.equals("F")){
                     int val0021 = 2;
@@ -280,24 +284,24 @@ public class Chemistry {
                     char s2 = element002.charAt(1);
                     if(s2=='O'){
                         a.setVal(element002, 3);
-                        double valEl=Ins2.val*2-val002;
-                        a.setKoef(valEl, 2);
+                        double valEl= Inspection.val*2-val002;
+                        a.setIndex(valEl, 2);
                         char s1 = element002.charAt(0);
-                        int val0021 = (int) Ins2.valent02;
-                        int o = (int)Ins2.valent01;
+                        int val0021 = (int) Inspection.valent02;
+                        int o = (int) Inspection.valent01;
                         element002 = Character.toString(s1)+val0021+"O"+o;
                     } else {
                         a.setVal(element002, 4);
-                        double valEl = Ins2.val * 2 - val002;
-                        a.setKoef(valEl, 2);
+                        double valEl = Inspection.val * 2 - val002;
+                        a.setIndex(valEl, 2);
                         char s1 = element002.charAt(0);
-                        int val0021 = (int) Ins2.valent02;
-                        int o = (int) Ins2.valent01;
+                        int val0021 = (int) Inspection.valent02;
+                        int o = (int) Inspection.valent01;
                         element002 = Character.toString(s1) + Character.toString(s2) + val0021 + "O" + o;
                     }
                 }
-                e.setRast(element001,element1);
-                if(Ins3.rast.equals("No")){
+                c.setRast(element001,element1);
+                if(Inspection2.rast.equals("No")){
                     System.out.println("В результате реакции получим: " + element001 + val0011 + "(" + element1 + ")" + val11 + "↓ + " + element002);
                 } else {
                     System.out.println("В результате реакции получим: " + element001 + val0011 + "(" + element1 + ")" + val11 + " + " + element002);
@@ -307,38 +311,37 @@ public class Chemistry {
             }
         } else if(nat2.equals("Немет. оксид") && nat1.equals("Соль")){
             if((strength1<strength2) && (strength2>2)){
-                a.setKoef(val01, val2);
-                int val011 = (int) Ins2.valent01;
-                int val21 = (int) Ins2.valent02;
+                a.setIndex(val01, val2);
+                int val011 = (int) Inspection.valent01;
+                int val21 = (int) Inspection.valent02;
 
                 if(element02.equals("Cl") || element02.equals("Br") || element02.equals("I") || element02.equals("F")) {
                     int val021 = 2;
                     element02 = element02 + val021;
                 } else if(element02.equals("S")){
-
+                    //елемент и индекс остаются те же
                 } else {
                     char s2 = element02.charAt(1);
                     if(s2=='O'){
                         a.setVal(element02, 3);
-                        double valEl=Ins2.val*2-val02;
-                        a.setKoef(valEl, 2);
+                        double valEl= Inspection.val*2-val02;
+                        a.setIndex(valEl, 2);
                         char s1 = element02.charAt(0);
-                        int val021 = (int) Ins2.valent02;
-                        int o = (int)Ins2.valent01;
+                        int val021 = (int) Inspection.valent02;
+                        int o = (int) Inspection.valent01;
                         element02 = Character.toString(s1)+val021+"O"+o;
                     } else {
                         a.setVal(element02, 4);
-                        double valEl = Ins2.val * 2 - val02;
-                        a.setKoef(valEl, 2);
+                        double valEl = Inspection.val * 2 - val02;
+                        a.setIndex(valEl, 2);
                         char s1 = element02.charAt(0);
-                        int val021 = (int) Ins2.valent02;
-                        int o = (int) Ins2.valent01;
+                        int val021 = (int) Inspection.valent02;
+                        int o = (int) Inspection.valent01;
                         element02 = Character.toString(s1) + Character.toString(s2) + val021 + "O" + o;
                     }
                 }
-
-                e.setRast(element01, element2);
-                if(Ins3.rast.equals("No")){
+                c.setRast(element01, element2);
+                if(Inspection2.rast.equals("No")){
                     System.out.println("В результате реакции получим: " + element01 + val011 + "(" + element2 + ")" + val21 + "↓ + " + element02);
                 } else {
                     System.out.println("В результате реакции получим: " + element01 + val011 + "(" + element2 + ")" + val21 + " + " + element02);
